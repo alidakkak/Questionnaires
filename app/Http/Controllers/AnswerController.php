@@ -14,14 +14,15 @@ class AnswerController extends Controller
         try {
             foreach ($request->answers as $answer) {
                 answer::create([
-                   'value' => array_key_exists('value', $answer) ? $answer['value'] : null,
-                   'poll_id' => array_key_exists('question_id', $answer) ? $answer['question_id'] : null,
+                   'name' => $request->name,
+                   'type' => $request->type,
+                   'poll_id' => $answer['question_id'],
                     'option_id' => array_key_exists('option_id', $answer) ? $answer['option_id'] : null,
                 ]);
             }
             return response()->json([
                 'message' => 'SuccessFully',
-                'data' => AnswerResource::make($answer),
+               // 'data' => AnswerResource::make($answer),
             ]);
         } catch (\Exception $e) {
             return response()->json([

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('poll_id')->constrained()->onDelete('cascade');
             $table->foreignId('option_id')->nullable()->references('id')->on('options')->onDelete('cascade');
-            $table->longText('value')->nullable();
+            $table->string('name');
+            $table->enum('type', ['before', 'after']);
             $table->timestamps();
         });
     }
