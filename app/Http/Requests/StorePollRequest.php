@@ -23,6 +23,10 @@ class StorePollRequest extends FormRequest
     {
         return [
             'question' => 'required|string',
+            'points' => 'required|integer',
+            'options' => 'required|array',
+            'options.*.text' => 'required|string',
+            'options.*.isCorrect' => 'required|boolean',
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAnswerRequest extends FormRequest
+class StoreOptionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class StoreAnswerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'answers' => 'required|array',
-            'answers.*.question_id' => 'required|integer|exists:polls,id',
-            'answers.*.option_id' => 'integer|exists:options,id',
-            'answers.*.value' => 'string',
+            'text' => 'required',
+            'isCorrect' => 'boolean',
+            'poll_id' => 'required|exists:polls,id'
         ];
     }
 }

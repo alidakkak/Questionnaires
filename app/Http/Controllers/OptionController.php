@@ -2,42 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePollRequest;
-use App\Http\Resources\PollResource;
-use App\Models\Poll;
+use App\Http\Requests\StoreOptionRequest;
+use App\Http\Resources\OptionResource;
+use App\Models\Option;
 use Illuminate\Http\Request;
 
-class PollController extends Controller
+class OptionController extends Controller
 {
     public function index()
     {
-        $poll = Poll::all();
+        $Option = Option::all();
 
-        return PollResource::collection($poll);
+        return OptionResource::collection($Option);
     }
 
-    public function questionWithAnswer()
-    {
-        $poll = Poll::all();
-
-        return PollResource::collection($poll);
-    }
-
-    public function store(StorePollRequest $request)
+    public function store(StoreOptionRequest $request)
     {
         try {
-            $poll = Poll::create($request->all());
-
-            foreach ($request->options as $option) {
-                $poll->option()->create([
-                    'text' => $option['text'],
-                    'isCorrect' => $option['isCorrect'],
-                ]);
-            }
+            $Option = Option::create($request->all());
 
             return response()->json([
                 'message' => 'Created SuccessFully',
-                'data' => PollResource::make($poll),
+                'data' => OptionResource::make($Option),
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -49,26 +35,26 @@ class PollController extends Controller
 
     public function show($Id)
     {
-        $poll = Poll::find($Id);
-        if (! $poll) {
+        $Option = Option::find($Id);
+        if (! $Option) {
             return response()->json(['message' => 'Not found'], 404);
         }
 
-        return PollResource::make($poll);
+        return OptionResource::make($Option);
     }
 
     public function delete($Id)
     {
         try {
-            $poll = Poll::find($Id);
-            if (! $poll) {
+            $Option = Option::find($Id);
+            if (! $Option) {
                 return response()->json(['message' => 'Not Found'], 404);
             }
-            $poll->delete();
+            $Option->delete();
 
             return response()->json([
                 'message' => 'Deleted SuccessFully',
-                'data' => PollResource::make($poll),
+                'data' => OptionResource::make($Option),
             ]);
         } catch (\Exception $e) {
             return response()->json([

@@ -15,4 +15,9 @@ class answer extends Model
     {
         return $this->belongsTo(poll::class);
     }
+
+    public function option()
+    {
+        return $this->belongsTo(Option::class);
+    }
 }

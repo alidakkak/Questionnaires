@@ -25,6 +25,8 @@ class PollResource extends JsonResource
         return [
             'id' => $this->id,
             'question' => $this->question,
+            'points' => $this->points,
+            'option' => OptionResource::collection($this->option),
         ];
     }
 }
