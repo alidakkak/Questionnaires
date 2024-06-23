@@ -24,7 +24,8 @@ class StorePollRequest extends FormRequest
         return [
             'title' => 'required|string',
             'questions' => 'array',
-            'questions.*' => 'required|numeric|exists:questions,id'
+            'questions.*.question_id' => 'required|numeric|exists:questions,id',
+            'questions.*.mark' => 'required|numeric'
         ];
     }
 }

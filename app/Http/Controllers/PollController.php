@@ -6,6 +6,7 @@ use App\Http\Requests\StorePollRequest;
 use App\Http\Requests\UpdatePollRequest;
 use App\Http\Resources\PollResource;
 use App\Models\Poll;
+use App\Models\PollQuestion;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -23,7 +24,11 @@ class PollController extends Controller
     {
         try {
             $poll = Poll::create($request->only(['title']));
-            $poll->questions->sync($request->questions);
+            $syncData = [];
+            foreach ($request->questions as $question) {
+                $syncData[$question['question_id']] = ['mark' => $question['mark']];
+            }
+            $poll->questions->sync($syncData);
             return PollResource::make($poll);
         } catch (\Exception $e) {
             return response()->json([
@@ -42,7 +47,11 @@ class PollController extends Controller
                 ], 404);
             }
             $poll->update($request->only(['title']));
-            $poll->questions->sync($request->questions);
+            $syncData = [];
+            foreach ($request->questions as $question) {
+                $syncData[$question['question_id']] = ['mark' => $question['mark']];
+            }
+            $poll->questions->sync($syncData);
             return PollResource::make($poll);
         } catch (\Exception $e) {
             return response()->json([

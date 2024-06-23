@@ -27,6 +27,8 @@ class UserFormSubmissionController extends Controller
         try {
             $submission = UserFormSubmission::create($request->only(['username','course_name', 'course_date', 'center', 'poll_id']));
 
+
+
             foreach ($request->question_answers as $question_answer){
                 UserSubmissionAnswer::create([
                     'user_form_submission_id' =>  $submission->id,

@@ -62,8 +62,7 @@ Route::get('/newSubmission' , [UserFormSubmissionController::class , 'createNewS
     Route::patch('/teacherQuestion/{id}' , [TeacherQuestionController::class , 'update']);
     Route::delete('/teacherQuestion/{id}' , [TeacherQuestionController::class , 'delete']);
 
-
-Route::get('/userSubmission' , [UserFormSubmissionController::class , 'index']);
+    Route::get('/userSubmission' , [UserFormSubmissionController::class , 'index']);
 
 //});
 
