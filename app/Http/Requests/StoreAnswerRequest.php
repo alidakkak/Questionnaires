@@ -22,11 +22,9 @@ class StoreAnswerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'answers' => 'required|array',
-            'answers.*.question_id' => 'required|integer|exists:polls,id',
-            'answers.*.option_id' => 'integer|exists:options,id',
-            'name' => 'required|string',
-            'type' => 'required|string',
+           'question_id' => 'required|numeric|exists:questions,id',
+           'title' => 'required|string',
+            'is_correct' => 'required|boolean'
         ];
     }
 }
