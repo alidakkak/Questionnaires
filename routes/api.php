@@ -30,7 +30,6 @@ Route::get('/polls/{id}' , [PollController::class , 'show']);
 Route::get('/questions' , [QuestionController::class , 'index']);
 Route::get('/questions/{id}' , [QuestionController::class , 'show']);
 
-Route::post('answers', [AnswerController::class, 'store']);
 
 //Route::group(['middleware' => 'auth'], function () {
 
@@ -42,6 +41,10 @@ Route::post('answers', [AnswerController::class, 'store']);
     Route::post('/questions' , [QuestionController::class , 'store']);
     Route::patch('/questions/{id}' , [QuestionController::class , 'update']);
     Route::delete('/questions/{id}' , [QuestionController::class , 'delete']);
+
+    Route::post('/answers' , [AnswerController::class , 'store']);
+    Route::patch('/answers/{id}' , [AnswerController::class , 'update']);
+    Route::delete('/answers/{id}' , [AnswerController::class , 'delete']);
 
 //});
 
