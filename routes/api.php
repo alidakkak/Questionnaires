@@ -42,17 +42,8 @@ Route::get('/questions/{id}' , [QuestionController::class , 'show']);
     Route::patch('/questions/{id}' , [QuestionController::class , 'update']);
     Route::delete('/questions/{id}' , [QuestionController::class , 'delete']);
 
-<<<<<<< HEAD
-    /// Teacher
-    Route::post('teachers', [TeacherController::class, 'store']);
-    Route::get('teachers', [TeacherController::class, 'index']);
-    Route::delete('teachers/{Id}', [TeacherController::class, 'delete']);
-    Route::patch('teachers/{Id}', [TeacherController::class, 'update']);
-=======
     Route::post('/answers' , [AnswerController::class , 'store']);
     Route::patch('/answers/{id}' , [AnswerController::class , 'update']);
     Route::delete('/answers/{id}' , [AnswerController::class , 'delete']);
->>>>>>> 6c52bda219dd910d0fa2c1717646db43bfc81a97
-
 //});
 
