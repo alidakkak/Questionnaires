@@ -13,6 +13,6 @@ class Poll extends Model
 
     public function questions()
     {
-        return $this->belongsToMany(Question::class, 'poll_question', 'poll_id', 'question_id');
+        return $this->belongsToMany(Question::class, 'poll_question', 'poll_id', 'question_id')->withPivot('mark');
     }
 }
