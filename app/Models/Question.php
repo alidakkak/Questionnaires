@@ -15,4 +15,8 @@ class Question extends Model
     {
         return $this->belongsToMany(Poll::class, 'poll_question', 'question_id', 'poll_id');
     }
+
+    public function answers(){
+        return $this->hasMany(Answer::class);
+    }
 }

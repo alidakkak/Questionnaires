@@ -11,16 +11,6 @@ class Poll extends Model
 
     protected $guarded = ['id'];
 
-    public function answer()
-    {
-        return $this->hasMany(answer::class);
-    }
-
-    public function option()
-    {
-        return $this->hasMany(Option::class);
-    }
-
     public function questions()
     {
         return $this->belongsToMany(Question::class , 'poll_question' , 'poll_id' , 'question_id');
