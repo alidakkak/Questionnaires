@@ -28,7 +28,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/polls', [PollController::class, 'index']);
 
-Route::get('/newSubmission' , [UserFormSubmissionController::class , 'createNewSubmission']);
+Route::post('/newSubmission' , [UserFormSubmissionController::class , 'createNewSubmission']);
 
 Route::get('/teacherQuestion' , [TeacherQuestionController::class , 'index']);
 

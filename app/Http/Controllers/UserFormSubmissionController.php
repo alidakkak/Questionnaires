@@ -13,7 +13,7 @@ class UserFormSubmissionController extends Controller
 
     public function index(){
         try {
-            $userSubmissions = UserFormSubmission::orderBy('created-at' , 'desc')->get();
+            $userSubmissions = UserFormSubmission::orderBy('created_at' , 'desc')->get();
             return  UserFormSubmissionResource::collection($userSubmissions);
         }catch (\Throwable $th){
             return response([
@@ -34,6 +34,7 @@ class UserFormSubmissionController extends Controller
                     'selected_answer_id' => $question_answer['selected_answer_id'],
                 ]);
             }
+            return UserFormSubmissionResource::make($submission);
 
         }catch (\Throwable $th){
             return response([

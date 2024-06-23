@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_submission_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_form_submission_id')->references('id')->on('user_form_submission')->onDelete('cascade');
+            $table->foreignId('user_form_submission_id')->references('id')->on('user_form_submissions')->onDelete('cascade');
             $table->foreignId('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->foreignId('selected_answer_id')->references('id')->on('answers')->onDelete('cascade');
             $table->timestamps();

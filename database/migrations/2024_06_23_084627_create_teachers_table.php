@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('center');
             $table->string('teacher_name');
             $table->string('rating');
+            $table->string('note');
             $table->json('dynamic_question_answers');
             $table->text('value')->nullable();
             $table->timestamps();

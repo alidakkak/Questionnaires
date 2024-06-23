@@ -27,7 +27,7 @@ class TeacherController extends Controller
 'course_date',
 'center',
 'teacher_name',
-'rating']);
+'rating','note']);
 
             $teacherData['dynamic_question_answers'] = json_encode($request->dynamic_question_answers);
 

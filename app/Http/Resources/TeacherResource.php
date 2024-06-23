@@ -19,6 +19,7 @@ class TeacherResource extends JsonResource
             'student_name' => $this->student_name,
             'course_name' => $this->course_name,
             'course_date' => $this->course_date,
+            'note' => $this->note,
             'center' => $this->center,
             'teacher_name' => $this->teacher_name,
             'rating' => $this->rating,
