@@ -28,7 +28,7 @@ class PollController extends Controller
             foreach ($request->questions as $question) {
                 $syncData[$question['question_id']] = ['mark' => $question['mark']];
             }
-            $poll->questions->sync($syncData);
+            $poll->questions()->sync($syncData);
             return PollResource::make($poll);
         } catch (\Exception $e) {
             return response()->json([
@@ -37,6 +37,7 @@ class PollController extends Controller
             ], 500);
         }
     }
+
 
     public function update(UpdatePollRequest $request , $pollID){
         try {
@@ -51,7 +52,7 @@ class PollController extends Controller
             foreach ($request->questions as $question) {
                 $syncData[$question['question_id']] = ['mark' => $question['mark']];
             }
-            $poll->questions->sync($syncData);
+            $poll->questions()->sync($syncData);
             return PollResource::make($poll);
         } catch (\Exception $e) {
             return response()->json([

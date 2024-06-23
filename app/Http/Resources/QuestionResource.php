@@ -18,7 +18,8 @@ class QuestionResource extends JsonResource
         $baseData = [
             'title' => $this->title,
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
-            'answers' => AnswerResource::collection($this->answers)
+            'answers' => AnswerResource::collection($this->answers),
+            'pivot' => $this->pivot
         ];
         return $baseData;
     }
