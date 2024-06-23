@@ -4,6 +4,7 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\PollController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherQuestionController;
 use Illuminate\Http\Request;
@@ -22,33 +23,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('questions', [PollController::class, 'index']);
+
+Route::get('/polls', [PollController::class, 'index']);
+Route::get('/polls/{id}' , [PollController::class , 'show']);
+
+Route::get('/questions' , [QuestionController::class , 'index']);
+Route::get('/questions/{id}' , [QuestionController::class , 'show']);
 
 Route::post('answers', [AnswerController::class, 'store']);
 
 //Route::group(['middleware' => 'auth'], function () {
+
     /// Poll
-    Route::post('questions', [PollController::class, 'store']);
-//    Route::get('questions/{Id}', [PollController::class, 'show']);
-    Route::delete('questions/{Id}', [PollController::class, 'delete']);
-    Route::get('questionWithAnswer', [PollController::class, 'questionWithAnswer']);
+    Route::post('/polls', [PollController::class, 'store']);
+    Route::patch('/polls/{id}' , [PollController::class , 'update']);
+    Route::delete('/polls/{Id}', [PollController::class, 'delete']);
 
-    /// Teacher Question
-    Route::post('teacherQuestions', [TeacherQuestionController::class, 'store']);
-    //    Route::get('teacherQuestions/{Id}', [TeacherQuestionController::class, 'show']);
-    Route::delete('teacherQuestions/{Id}', [TeacherQuestionController::class, 'delete']);
-    Route::patch('teacherQuestions/{Id}', [TeacherQuestionController::class, 'update']);
-    Route::get('teacherQuestions', [TeacherQuestionController::class, 'questionWithAnswer']);
-
-    /// Teacher
-    Route::post('teachers', [TeacherController::class, 'store']);
-    //    Route::get('teacherQuestions/{Id}', [TeacherController::class, 'show']);
-    Route::delete('teachers/{Id}', [TeacherController::class, 'delete']);
-    Route::patch('teachers/{Id}', [TeacherController::class, 'update']);
-
-    /// Option
-    Route::post('options', [OptionController::class, 'store']);
-    Route::delete('options/{Id}', [OptionController::class, 'delete']);
+    Route::post('/questions' , [QuestionController::class , 'store']);
+    Route::patch('/questions/{id}' , [QuestionController::class , 'update']);
+    Route::delete('/questions/{id}' , [QuestionController::class , 'delete']);
 
 //});
 

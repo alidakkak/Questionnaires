@@ -14,19 +14,19 @@ class PollResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        if ($request->route()->uri() === 'api/questionWithAnswer') {
-            return [
-                'id' => $this->id,
-                'question' => $this->question,
-                'answers' => AnswerResource::collection($this->answer),
-            ];
-        }
+        $baseData = [
+            'title' => $this->title,
+            'created_at' => $this->created_at
+        ];
 
+        if ($request->query('page') === 'details'){
+            $baseData = array_merge($baseData , [
+//                TODO return question of the poll in question resource
+            ]);
+        }
         return [
-            'id' => $this->id,
-            'question' => $this->question,
-            'points' => $this->points,
-            'option' => OptionResource::collection($this->option),
+            'title' => $this->title,
+            'created_at' => $this->created_at
         ];
     }
 }
