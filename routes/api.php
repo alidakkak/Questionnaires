@@ -30,6 +30,7 @@ Route::get('/polls', [PollController::class, 'index']);
 
 Route::get('/newSubmission' , [UserFormSubmissionController::class , 'createNewSubmission']);
 
+Route::get('/teacherQuestion' , [TeacherQuestionController::class , 'index']);
 
 
 //Route::get('/polls/{id}' , [PollController::class , 'show']);
@@ -53,6 +54,7 @@ Route::get('/newSubmission' , [UserFormSubmissionController::class , 'createNewS
     Route::delete('/answers/{id}' , [AnswerController::class , 'delete']);
 
     // Teachers
+    Route::get('/teachers' , [TeacherController::class , 'index']);
     Route::post('/teachers' , [TeacherController::class , 'store']);
     Route::patch('/teachers/{id}' , [TeacherController::class , 'update']);
     Route::delete('/teachers/{id}' , [TeacherController::class , 'delete']);
