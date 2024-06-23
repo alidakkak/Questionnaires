@@ -20,4 +20,9 @@ class Poll extends Model
     {
         return $this->hasMany(Option::class);
     }
+
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class , 'poll_question' , 'poll_id' , 'question_id');
+    }
 }

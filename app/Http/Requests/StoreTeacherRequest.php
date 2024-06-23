@@ -28,6 +28,8 @@ class StoreTeacherRequest extends FormRequest
             'center' => 'required|string',
             'teacher_name' => 'required|string',
             'rating' => 'required|min:1|max:5',
+            'answers.*' => 'required|array',
+            'answers'
         ];
     }
 }

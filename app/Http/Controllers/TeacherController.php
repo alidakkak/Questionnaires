@@ -21,7 +21,12 @@ class TeacherController extends Controller
     {
         try {
             $teacher = Teacher::create($request->all());
-
+            foreach ($request->answers as $answer) {
+                Teacher::create([
+                    'value' => $request->value,
+                    'teacher_question_id' => array_key_exists('teacher_question_id', $answer) ? $answer['teacher_question_id'] : null,
+                ]);
+            }
             return response()->json([
                 'message' => 'Created SuccessFully',
                 'data' => TeacherResource::make($teacher),

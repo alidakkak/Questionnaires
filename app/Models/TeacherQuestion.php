@@ -10,4 +10,9 @@ class TeacherQuestion extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function teacher()
+    {
+        return $this->belongsTo(TeacherQuestion::class);
+    }
 }

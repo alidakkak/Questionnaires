@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function polls()
+    {
+        return $this->belongsToMany(Poll::class, 'poll_question', 'question_id', 'poll_id');
+    }
 }

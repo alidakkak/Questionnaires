@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('center');
             $table->string('teacher_name');
             $table->string('rating');
+            $table->foreignId('teacher_question_id')->references('id')->on('teacher_questions')->onDelete('cascade');
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }

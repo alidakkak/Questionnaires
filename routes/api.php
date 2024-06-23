@@ -42,13 +42,9 @@ Route::post('answers', [AnswerController::class, 'store']);
 
     /// Teacher
     Route::post('teachers', [TeacherController::class, 'store']);
-    //    Route::get('teacherQuestions/{Id}', [TeacherController::class, 'show']);
+    Route::get('teachers', [TeacherController::class, 'index']);
     Route::delete('teachers/{Id}', [TeacherController::class, 'delete']);
     Route::patch('teachers/{Id}', [TeacherController::class, 'update']);
-
-    /// Option
-    Route::post('options', [OptionController::class, 'store']);
-    Route::delete('options/{Id}', [OptionController::class, 'delete']);
 
 //});
 
