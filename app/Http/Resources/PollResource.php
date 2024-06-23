@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,19 +15,10 @@ class PollResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $baseData = [
-            'title' => $this->title,
-            'created_at' => $this->created_at
-        ];
-
-        if ($request->query('page') === 'details'){
-            $baseData = array_merge($baseData , [
-//                TODO return question of the poll in question resource
-            ]);
-        }
         return [
             'title' => $this->title,
-            'created_at' => $this->created_at
+            'questions' => QuestionResource::collection($this->questions),
+            'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
         ];
     }
 }

@@ -23,6 +23,7 @@ class PollController extends Controller
     {
         try {
             $poll = Poll::create($request->only(['title']));
+            $poll->questions->sync($request->questions);
             return PollResource::make($poll);
         } catch (\Exception $e) {
             return response()->json([
@@ -41,6 +42,7 @@ class PollController extends Controller
                 ], 404);
             }
             $poll->update($request->only(['title']));
+            $poll->questions->sync($request->questions);
             return PollResource::make($poll);
         } catch (\Exception $e) {
             return response()->json([

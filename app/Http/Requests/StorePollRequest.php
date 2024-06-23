@@ -23,6 +23,8 @@ class StorePollRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'questions' => 'array',
+            'questions.*' => 'required|numeric|exists:questions,id'
         ];
     }
 }

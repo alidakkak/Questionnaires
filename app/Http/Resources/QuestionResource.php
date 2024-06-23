@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,8 +17,8 @@ class QuestionResource extends JsonResource
     {
         $baseData = [
             'title' => $this->title,
-            'created_at' => $this->created_at,
-//            TODO return answers
+            'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
+            'answers' => AnswerResource::collection($this->answers)
         ];
         return $baseData;
     }

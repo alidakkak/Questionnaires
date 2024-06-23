@@ -25,10 +25,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::get('/polls', [PollController::class, 'index']);
-Route::get('/polls/{id}' , [PollController::class , 'show']);
-
-Route::get('/questions' , [QuestionController::class , 'index']);
-Route::get('/questions/{id}' , [QuestionController::class , 'show']);
+//Route::get('/polls/{id}' , [PollController::class , 'show']);
+//Route::get('/questions' , [QuestionController::class , 'index']);
+//Route::get('/questions/{id}' , [QuestionController::class , 'show']);
 
 
 //Route::group(['middleware' => 'auth'], function () {
