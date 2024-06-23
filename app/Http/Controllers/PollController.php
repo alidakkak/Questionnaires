@@ -38,6 +38,7 @@ class PollController extends Controller
         }
     }
 
+
     public function update(UpdatePollRequest $request , $pollID){
         try {
             $poll = Poll::where('id' , $pollID)->first();
