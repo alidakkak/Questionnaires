@@ -16,6 +16,7 @@ class PollResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'title' => $this->title,
             'questions' => QuestionResource::collection($this->questions),
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),

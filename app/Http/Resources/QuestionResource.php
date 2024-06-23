@@ -16,6 +16,7 @@ class QuestionResource extends JsonResource
     public function toArray(Request $request): array
     {
         $baseData = [
+            'id' => $this->id,
             'title' => $this->title,
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
             'answers' => AnswerResource::collection($this->answers),
