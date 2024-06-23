@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('center');
             $table->string('teacher_name');
             $table->string('rating');
-            $table->foreignId('teacher_question_id')->references('id')->on('teacher_questions')->onDelete('cascade');
+            $table->json('dynamic_question_answers');
             $table->text('value')->nullable();
             $table->timestamps();
         });

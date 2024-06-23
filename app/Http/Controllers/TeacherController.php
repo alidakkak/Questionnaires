@@ -22,17 +22,14 @@ class TeacherController extends Controller
     {
         DB::beginTransaction();
         try {
-            $teacherData = $request->all();
-            $answersData = [];
+            $teacherData = $request->only(['student_name',
+'course_name',
+'course_date',
+'center',
+'teacher_name',
+'rating']);
 
-            foreach ($request->answers as $answer) {
-                $answersData[] = [
-                    'value' => $answer['value'],
-                    'teacher_question_id' => $answer['teacher_question_id'] ?? null,
-                ];
-            }
-
-            $teacherData = array_merge($teacherData, ['answers' => json_encode($answersData)]);
+            $teacherData['dynamic_question_answers'] = json_encode($request->dynamic_question_answers);
 
             $teacher = Teacher::create($teacherData);
 

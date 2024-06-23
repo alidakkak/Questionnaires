@@ -28,9 +28,9 @@ class StoreTeacherRequest extends FormRequest
             'center' => 'required|string',
             'teacher_name' => 'required|string',
             'rating' => 'required|min:1|max:5',
-            'answers.*' => 'required|array',
-            'answers.*.value' => 'required|string',
-            'answers.*.teacher_question_id' => 'required',
+            'dynamic_question_answers' => 'required|array',
+            'dynamic_question_answers.*.teacher_question' => 'required|string',
+            'dynamic_question_answers.*.value' => 'required|string',
         ];
     }
 }
