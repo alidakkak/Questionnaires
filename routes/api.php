@@ -7,6 +7,8 @@ use App\Http\Controllers\PollController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherQuestionController;
+use App\Http\Controllers\UserFormSubmissionController;
+use App\Models\UserFormSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::get('/polls', [PollController::class, 'index']);
+
+Route::get('/newSubmission' , [UserFormSubmissionController::class , 'createNewSubmission']);
+
+
+
 //Route::get('/polls/{id}' , [PollController::class , 'show']);
 //Route::get('/questions' , [QuestionController::class , 'index']);
 //Route::get('/questions/{id}' , [QuestionController::class , 'show']);
@@ -45,16 +52,18 @@ Route::get('/polls', [PollController::class, 'index']);
     Route::patch('/answers/{id}' , [AnswerController::class , 'update']);
     Route::delete('/answers/{id}' , [AnswerController::class , 'delete']);
 
-    /// Teachers
+    // Teachers
     Route::post('/teachers' , [TeacherController::class , 'store']);
     Route::patch('/teachers/{id}' , [TeacherController::class , 'update']);
     Route::delete('/teachers/{id}' , [TeacherController::class , 'delete']);
 
-
-    /// Teachers
+    // Teachers
     Route::post('/teacherQuestion' , [TeacherQuestionController::class , 'store']);
     Route::patch('/teacherQuestion/{id}' , [TeacherQuestionController::class , 'update']);
     Route::delete('/teacherQuestion/{id}' , [TeacherQuestionController::class , 'delete']);
+
+
+Route::get('/userSubmission' , [UserFormSubmissionController::class , 'index']);
 
 //});
 

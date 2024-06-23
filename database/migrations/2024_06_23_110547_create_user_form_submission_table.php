@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('poll_id')->references('id')->on('polls');
             $table->string('username');
+            $table->string('course_name');
+            $table->date('course_date');
+            $table->string('center');
             $table->timestamps();
         });
     }
