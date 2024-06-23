@@ -22,6 +22,7 @@ class TeacherResource extends JsonResource
             'center' => $this->center,
             'teacher_name' => $this->teacher_name,
             'rating' => $this->rating,
+            'answers' => $this->teacherQuestion
         ];
     }
 }

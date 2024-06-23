@@ -29,7 +29,8 @@ class StoreTeacherRequest extends FormRequest
             'teacher_name' => 'required|string',
             'rating' => 'required|min:1|max:5',
             'answers.*' => 'required|array',
-            'answers'
+            'answers.*.value' => 'required|string',
+            'answers.*.teacher_question_id' => 'required',
         ];
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateTeacherRequest;
 use App\Http\Resources\TeacherResource;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
@@ -19,25 +20,37 @@ class TeacherController extends Controller
 
     public function store(StoreTeacherRequest $request)
     {
+        DB::beginTransaction();
         try {
-            $teacher = Teacher::create($request->all());
+            $teacherData = $request->all();
+            $answersData = [];
+
             foreach ($request->answers as $answer) {
-                Teacher::create([
-                    'value' => $request->value,
-                    'teacher_question_id' => array_key_exists('teacher_question_id', $answer) ? $answer['teacher_question_id'] : null,
-                ]);
+                $answersData[] = [
+                    'value' => $answer['value'],
+                    'teacher_question_id' => $answer['teacher_question_id'] ?? null,
+                ];
             }
+
+            $teacherData = array_merge($teacherData, ['answers' => json_encode($answersData)]);
+
+            $teacher = Teacher::create($teacherData);
+
+            DB::commit();
+
             return response()->json([
-                'message' => 'Created SuccessFully',
+                'message' => 'Created Successfully',
                 'data' => TeacherResource::make($teacher),
             ]);
         } catch (\Exception $e) {
+            DB::rollBack();
             return response()->json([
                 'message' => 'An error occurred',
                 'error' => $e->getMessage(),
             ], 500);
         }
     }
+
 
     public function update(UpdateTeacherRequest $request, $Id)
     {

@@ -45,5 +45,17 @@ Route::get('/questions/{id}' , [QuestionController::class , 'show']);
     Route::post('/answers' , [AnswerController::class , 'store']);
     Route::patch('/answers/{id}' , [AnswerController::class , 'update']);
     Route::delete('/answers/{id}' , [AnswerController::class , 'delete']);
+
+    /// Teachers
+    Route::post('/teachers' , [TeacherController::class , 'store']);
+    Route::patch('/teachers/{id}' , [TeacherController::class , 'update']);
+    Route::delete('/teachers/{id}' , [TeacherController::class , 'delete']);
+
+
+    /// Teachers
+    Route::post('/teacherQuestion' , [TeacherQuestionController::class , 'store']);
+    Route::patch('/teacherQuestion/{id}' , [TeacherQuestionController::class , 'update']);
+    Route::delete('/teacherQuestion/{id}' , [TeacherQuestionController::class , 'delete']);
+
 //});
 
