@@ -20,6 +20,7 @@ class UserFormSubmissionResource extends JsonResource
             'course_name' => $this->course_name,
             'course_date' => $this->course_date,
             'center' => $this->center,
+            'total_mark' => $this->total_mark,
             'questions_answer' => $this->getUserSubmissionDetails()
         ];
     }

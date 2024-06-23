@@ -28,6 +28,7 @@ class StoreNewSubmissionRequest extends FormRequest
             'center' => 'required|string',
             'question_answers' => 'required|array',
             'poll_id' => 'required|numeric|exists:polls,id',
+            'total_mark' => 'required|numeric|min:0',
             'question_answers.*.question_id' => 'required|numeric|exists:questions,id',
             'question_answers.*.selected_answer_id' => 'required|numeric|exists:answers,id'
         ];

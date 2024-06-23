@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('course_name');
             $table->date('course_date');
             $table->string('center');
+            $table->double('total_mark');
             $table->timestamps();
         });
     }

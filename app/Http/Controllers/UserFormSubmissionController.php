@@ -25,9 +25,7 @@ class UserFormSubmissionController extends Controller
 
     public function createNewSubmission(StoreNewSubmissionRequest $request){
         try {
-            $submission = UserFormSubmission::create($request->only(['username','course_name', 'course_date', 'center', 'poll_id']));
-
-
+            $submission = UserFormSubmission::create($request->only(['username','course_name', 'course_date', 'center', 'poll_id' , 'total_mark']));
 
             foreach ($request->question_answers as $question_answer){
                 UserSubmissionAnswer::create([
