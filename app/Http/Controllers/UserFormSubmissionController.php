@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNewSubmissionRequest;
+use App\Http\Resources\UserFormSubmissionResource;
 use App\Models\UserFormSubmission;
 use App\Models\UserSubmissionAnswer;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class UserFormSubmissionController extends Controller
     public function index(){
         try {
             $userSubmissions = UserFormSubmission::orderBy('created-at' , 'desc')->get();
+            return  UserFormSubmissionResource::collection($userSubmissions);
         }catch (\Throwable $th){
             return response([
                'message' => 'error',

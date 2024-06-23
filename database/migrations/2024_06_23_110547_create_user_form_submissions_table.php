@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_form_submission', function (Blueprint $table) {
+        Schema::create('user_form_submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('poll_id')->references('id')->on('polls');
             $table->string('username');
