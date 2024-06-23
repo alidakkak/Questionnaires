@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('polls', function (Blueprint $table) {
+        Schema::create('user_form_submission', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->foreignId('poll_id')->references('id')->on('polls');
+            $table->string('username');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('polls');
+        Schema::dropIfExists('user_form_submission');
     }
 };

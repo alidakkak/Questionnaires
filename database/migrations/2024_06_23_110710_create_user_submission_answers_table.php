@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('user_submission_answers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_form_submission_id')->references('id')->on('user_form_submission')->onDelete('cascade');
             $table->foreignId('question_id')->references('id')->on('questions')->onDelete('cascade');
-            $table->string('title');
-            $table->string('description');
-            $table->boolean('is_correct')->default(false);
+            $table->foreignId('selected_answer_id')->references('id')->on('answers')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('user_submission_answers');
     }
 };
